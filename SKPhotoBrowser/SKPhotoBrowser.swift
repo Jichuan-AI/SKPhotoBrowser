@@ -122,7 +122,7 @@ open class SKPhotoBrowser: UIViewController {
             closeButton.setImage(UIImage(systemName: "xmark")?.withTintColor(.systemGray, renderingMode: .alwaysOriginal), for: .normal)
         }
         #if targetEnvironment(macCatalyst)
-        closeButton.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
+        closeButton.frame = CGRect(x: 10, y: 10, width: 44, height: 44)
         #else
         closeButton.frame = .zero
         #endif
@@ -171,9 +171,9 @@ open class SKPhotoBrowser: UIViewController {
         
         // action
         // actionView.updateFrame(frame: view.frame)
-
+        
         if #available(iOS 11.0, *) {
-            saveButton.frame = CGRect(x: view.bounds.width-44, y: view.bounds.height-view.safeAreaInsets.bottom-44, width: 44, height: 44)
+            saveButton.frame = CGRect(x: view.bounds.width-44-10, y: view.bounds.height-view.safeAreaInsets.bottom-44-10, width: 44, height: 44)
         }
         
         // paging
