@@ -120,15 +120,11 @@ open class SKPhotoBrowser: UIViewController {
             closeButton.setImage(UIImage(systemName: "xmark")?.withTintColor(.systemGray, renderingMode: .alwaysOriginal), for: .normal)
         }
         
-        if #available(iOS 11.0, *) {
         #if targetEnvironment(macCatalyst)
-            closeButton.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
+        closeButton.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
         #else
-            if let window = UIApplication.shared.preferredApplicationWindow {
-                closeButton.frame = CGRect(x: 0, y: window.safeAreaInsets.top, width: 44, height: 44)
-            }
+        closeButton.frame = .zero
         #endif
-        }
         
         closeButton.addTarget(self, action: #selector(onCloseButtonTapped), for: .touchUpInside)
         view.addSubview(closeButton)
