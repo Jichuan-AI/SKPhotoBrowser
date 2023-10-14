@@ -16,6 +16,7 @@ public struct SKPhotoBrowserOptions {
     public static var displayAction: Bool = true
     public static var shareExtraCaption: String?
     public static var actionButtonTitles: [String]?
+    public static var actionCancelButtonTitle: String = "Cancel"
     
     public static var displayCounterLabel: Bool = true
     public static var displayBackAndForwardButton: Bool = true

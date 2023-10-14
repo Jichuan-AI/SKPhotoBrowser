@@ -491,6 +491,7 @@ internal extension SKPhotoBrowser {
         
         if let titles = SKPhotoBrowserOptions.actionButtonTitles {
             let actionSheetController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            actionSheetController.addAction(UIAlertAction(title: SKPhotoBrowserOptions.actionCancelButtonTitle, style: .cancel))
             
             for idx in titles.indices {
                 actionSheetController.addAction(UIAlertAction(title: titles[idx], style: .default, handler: { (_) -> Void in
