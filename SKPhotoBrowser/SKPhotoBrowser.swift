@@ -93,7 +93,7 @@ open class SKPhotoBrowser: UIViewController {
     }
     
     func setup() {
-//        modalPresentationCapturesStatusBarAppearance = false
+        modalPresentationCapturesStatusBarAppearance = false
         modalPresentationStyle = .custom
         modalTransitionStyle = .crossDissolve
         NotificationCenter.default.addObserver(self,
@@ -129,6 +129,7 @@ open class SKPhotoBrowser: UIViewController {
         closeButton.addTarget(self, action: #selector(onCloseButtonTapped), for: .touchUpInside)
         view.addSubview(closeButton)
         
+        setNeedsStatusBarAppearanceUpdate()
         // animator.willPresent(self)
     }
     
