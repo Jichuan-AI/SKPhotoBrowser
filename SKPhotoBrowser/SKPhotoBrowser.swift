@@ -32,7 +32,7 @@ open class SKPhotoBrowser: UIViewController {
     let animator: SKAnimator = .init()
     
     // child component
-    fileprivate var actionView: SKActionView!
+    // fileprivate var actionView: SKActionView!
     fileprivate(set) var paginationView: SKPaginationView!
     var toolbar: SKToolbar!
 
@@ -111,11 +111,23 @@ open class SKPhotoBrowser: UIViewController {
         configureAppearance()
         configurePagingScrollView()
         configureGestureControl()
-        configureActionView()
+        // configureActionView()
         configurePaginationView()
         configureToolbar()
-
+        
+        let closeButton = UIButton()
+        if #available(iOS 13.0, *) {
+            closeButton.setImage(UIImage(systemName: "xmark"), for: .normal)
+        }
+        closeButton.frame = CGRect(x: 10, y: 0, width: 44, height: 44)
+        closeButton.addTarget(self, action: #selector(onCloseButtonTapped), for: .touchUpInside)
+        view.addSubview(closeButton)
+        
         // animator.willPresent(self)
+    }
+    
+    @objc private func onCloseButtonTapped() {
+        dismissPhotoBrowser(animated: true)
     }
     
     override open func viewWillAppear(_ animated: Bool) {
@@ -139,7 +151,7 @@ open class SKPhotoBrowser: UIViewController {
         toolbar.frame = frameForToolbarAtOrientation()
         
         // action
-        actionView.updateFrame(frame: view.frame)
+        // actionView.updateFrame(frame: view.frame)
 
         // paging
         switch SKCaptionOptions.captionLocation {
@@ -269,11 +281,11 @@ open class SKPhotoBrowser: UIViewController {
 
 public extension SKPhotoBrowser {
     func updateCloseButton(_ image: UIImage, size: CGSize? = nil) {
-        actionView.updateCloseButton(image: image, size: size)
+        // actionView.updateCloseButton(image: image, size: size)
     }
     
     func updateDeleteButton(_ image: UIImage, size: CGSize? = nil) {
-        actionView.updateDeleteButton(image: image, size: size)
+        // actionView.updateDeleteButton(image: image, size: size)
     }
 }
 
@@ -373,7 +385,7 @@ public extension SKPhotoBrowser {
 
 internal extension SKPhotoBrowser {
     func showButtons() {
-        actionView.animate(hidden: false)
+        // actionView.animate(hidden: false)
     }
     
     func pageDisplayedAtIndex(_ index: Int) -> SKZoomingScrollView? {
@@ -568,8 +580,8 @@ private extension SKPhotoBrowser {
     }
     
     func configureActionView() {
-        actionView = SKActionView(frame: view.frame, browser: self)
-        view.addSubview(actionView)
+        // actionView = SKActionView(frame: view.frame, browser: self)
+        // view.addSubview(actionView)
     }
 
     func configurePaginationView() {
@@ -593,7 +605,7 @@ private extension SKPhotoBrowser {
         paginationView.setControlsHidden(hidden: hidden)
         
         // action view animation
-        actionView.animate(hidden: hidden)
+        // actionView.animate(hidden: hidden)
         
         if !hidden && !permanent {
             hideControlsAfterDelay()

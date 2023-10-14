@@ -16,7 +16,9 @@ class SKIndicatorView: UIActivityIndicatorView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         center = CGPoint(x: frame.width / 2, y: frame.height / 2)
-        style = SKPhotoBrowserOptions.indicatorStyle
+        if #available(iOS 13.0, *) {
+            style = SKPhotoBrowserOptions.indicatorStyle
+        }
         color = SKPhotoBrowserOptions.indicatorColor
     }
 }

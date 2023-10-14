@@ -31,7 +31,9 @@ public struct SKPhotoBrowserOptions {
     
     public static var backgroundColor: UIColor = .black
     public static var indicatorColor: UIColor = .white
-    public static var indicatorStyle: UIActivityIndicatorView.Style = .whiteLarge
+    
+    @available(iOS 13.0, *)
+    public static var indicatorStyle: UIActivityIndicatorView.Style = .medium
 
     /// By default close button is on left side and delete button is on right.
     ///
