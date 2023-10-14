@@ -33,6 +33,8 @@ open class SKPhotoBrowser: UIViewController {
     
     // child component
     // fileprivate var actionView: SKActionView!
+    private let saveButton = UIButton()
+    
     fileprivate(set) var paginationView: SKPaginationView!
     var toolbar: SKToolbar!
 
@@ -119,7 +121,6 @@ open class SKPhotoBrowser: UIViewController {
         if #available(iOS 13.0, *) {
             closeButton.setImage(UIImage(systemName: "xmark")?.withTintColor(.systemGray, renderingMode: .alwaysOriginal), for: .normal)
         }
-        
         #if targetEnvironment(macCatalyst)
         closeButton.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
         #else
@@ -129,11 +130,21 @@ open class SKPhotoBrowser: UIViewController {
         closeButton.addTarget(self, action: #selector(onCloseButtonTapped), for: .touchUpInside)
         view.addSubview(closeButton)
         
+        if #available(iOS 13.0, *) {
+            saveButton.setImage(UIImage(systemName: "arrow.down.circle.dotted")?.withTintColor(.systemGray, renderingMode: .alwaysOriginal), for: .normal)
+        }
+        saveButton.addTarget(self, action: #selector(onSaveButtonTapped), for: .touchUpInside)
+        view.addSubview(saveButton)
+        
         // animator.willPresent(self)
     }
     
     @objc private func onCloseButtonTapped() {
         dismissPhotoBrowser(animated: true)
+    }
+    
+    @objc private func onSaveButtonTapped() {
+        
     }
     
     override open func viewWillAppear(_ animated: Bool) {
@@ -159,6 +170,10 @@ open class SKPhotoBrowser: UIViewController {
         // action
         // actionView.updateFrame(frame: view.frame)
 
+        if #available(iOS 11.0, *) {
+            saveButton.frame = CGRect(x: view.bounds.width-44-10, y: view.bounds.height-view.safeAreaInsets.bottom-44, width: 44, height: 44)
+        }
+        
         // paging
         switch SKCaptionOptions.captionLocation {
         case .basic:
