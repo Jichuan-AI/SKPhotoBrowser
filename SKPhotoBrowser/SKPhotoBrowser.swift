@@ -131,7 +131,7 @@ open class SKPhotoBrowser: UIViewController {
         view.addSubview(closeButton)
         
         if #available(iOS 13.0, *) {
-            saveButton.setImage(UIImage(systemName: "arrow.down.circle.dotted")?.withTintColor(.systemGray, renderingMode: .alwaysOriginal), for: .normal)
+            saveButton.setBackgroundImage(UIImage(systemName: "arrow.down.circle.dotted")?.withTintColor(.systemGray, renderingMode: .alwaysOriginal), for: .normal)
         }
         saveButton.addTarget(self, action: #selector(onSaveButtonTapped), for: .touchUpInside)
         view.addSubview(saveButton)
