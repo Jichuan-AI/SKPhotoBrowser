@@ -173,7 +173,11 @@ open class SKPhotoBrowser: UIViewController {
         // actionView.updateFrame(frame: view.frame)
         
         if #available(iOS 11.0, *) {
+            #if targetEnvironment(macCatalyst)
             saveButton.frame = CGRect(x: view.bounds.width-44-10, y: view.bounds.height-view.safeAreaInsets.bottom-44-10, width: 44, height: 44)
+            #else
+            saveButton.frame = CGRect(x: view.bounds.width-44-10, y: view.bounds.height-view.safeAreaInsets.bottom-44+10, width: 44, height: 44)
+            #endif
         }
         
         // paging
