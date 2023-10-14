@@ -93,7 +93,7 @@ open class SKPhotoBrowser: UIViewController {
     }
     
     func setup() {
-        modalPresentationCapturesStatusBarAppearance = true
+        modalPresentationCapturesStatusBarAppearance = false
         modalPresentationStyle = .custom
         modalTransitionStyle = .crossDissolve
         NotificationCenter.default.addObserver(self,
