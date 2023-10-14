@@ -115,7 +115,7 @@ open class SKPhotoBrowser: UIViewController {
         configurePaginationView()
         configureToolbar()
 
-        animator.willPresent(self)
+        // animator.willPresent(self)
     }
     
     override open func viewWillAppear(_ animated: Bool) {
