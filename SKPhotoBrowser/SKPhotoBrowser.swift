@@ -124,7 +124,9 @@ open class SKPhotoBrowser: UIViewController {
         #if targetEnvironment(macCatalyst)
             closeButton.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
         #else
-            closeButton.frame = CGRect(x: 0, y: view.safeAreaInsets.top, width: 44, height: 44)
+            if let window = UIApplication.shared.preferredApplicationWindow {
+                closeButton.frame = CGRect(x: 0, y: window.safeAreaInsets.top, width: 44, height: 44)
+            }
         #endif
         }
         
