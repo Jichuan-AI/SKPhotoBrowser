@@ -131,7 +131,7 @@ open class SKPhotoBrowser: UIViewController {
         view.addSubview(closeButton)
         
         if #available(iOS 13.0, *) {
-            saveButton.setImage(UIImage(systemName: "square.and.arrow.down.fill")?.withTintColor(.white, renderingMode: .alwaysOriginal), for: .normal)
+            saveButton.setImage(UIImage(systemName: "square.and.arrow.down.fill")?.withTintColor(.systemGray, renderingMode: .alwaysOriginal), for: .normal)
         }
         saveButton.addTarget(self, action: #selector(onSaveButtonTapped), for: .touchUpInside)
         view.addSubview(saveButton)
@@ -143,8 +143,10 @@ open class SKPhotoBrowser: UIViewController {
         dismissPhotoBrowser(animated: true)
     }
     
+    public var onSaveTapped: (() -> Void)?
+    
     @objc private func onSaveButtonTapped() {
-        
+        onSaveTapped?()
     }
     
     override open func viewWillAppear(_ animated: Bool) {
@@ -171,7 +173,7 @@ open class SKPhotoBrowser: UIViewController {
         // actionView.updateFrame(frame: view.frame)
 
         if #available(iOS 11.0, *) {
-            saveButton.frame = CGRect(x: view.bounds.width-44-10, y: view.bounds.height-view.safeAreaInsets.bottom-44, width: 44, height: 44)
+            saveButton.frame = CGRect(x: view.bounds.width-44, y: view.bounds.height-view.safeAreaInsets.bottom-44, width: 44, height: 44)
         }
         
         // paging
