@@ -143,10 +143,10 @@ open class SKPhotoBrowser: UIViewController {
         dismissPhotoBrowser(animated: true)
     }
     
-    public var onSaveTapped: (() -> Void)?
+    public var onSaveTapped: ((Int) -> Void)?
     
     @objc private func onSaveButtonTapped() {
-        onSaveTapped?()
+        onSaveTapped?(currentPageIndex)
     }
     
     override open func viewWillAppear(_ animated: Bool) {
