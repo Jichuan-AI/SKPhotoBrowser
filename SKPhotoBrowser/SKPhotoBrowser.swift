@@ -93,7 +93,7 @@ open class SKPhotoBrowser: UIViewController {
     }
     
     func setup() {
-        modalPresentationCapturesStatusBarAppearance = false
+//        modalPresentationCapturesStatusBarAppearance = false
         modalPresentationStyle = .custom
         modalTransitionStyle = .crossDissolve
         NotificationCenter.default.addObserver(self,
@@ -177,7 +177,7 @@ open class SKPhotoBrowser: UIViewController {
     }
     
     override open var prefersStatusBarHidden: Bool {
-        return !SKPhotoBrowserOptions.displayStatusbar
+        return true //!SKPhotoBrowserOptions.displayStatusbar
     }
     
     // MARK: - Notification
