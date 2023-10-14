@@ -57,9 +57,6 @@ open class SKPhotoBrowser: UIViewController {
 
     // statusbar initial state
     private var statusbarHidden: Bool = UIApplication.shared.isStatusBarHidden
-    
-    // strings
-    open var cancelTitle = "Cancel"
 
     // MARK: - Initializer
     required public init?(coder aDecoder: NSCoder) {
@@ -106,6 +103,9 @@ open class SKPhotoBrowser: UIViewController {
     }
     
     // MARK: - override
+    
+    open override var prefersHomeIndicatorAutoHidden: Bool { true }
+    
     override open func viewDidLoad() {
         super.viewDidLoad()
         configureAppearance()
@@ -491,7 +491,6 @@ internal extension SKPhotoBrowser {
         
         if let titles = SKPhotoBrowserOptions.actionButtonTitles {
             let actionSheetController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            actionSheetController.addAction(UIAlertAction(title: cancelTitle, style: .cancel))
             
             for idx in titles.indices {
                 actionSheetController.addAction(UIAlertAction(title: titles[idx], style: .default, handler: { (_) -> Void in
