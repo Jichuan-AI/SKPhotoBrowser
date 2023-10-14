@@ -138,9 +138,6 @@ open class SKPhotoBrowser: UIViewController {
     
     override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
-        setNeedsStatusBarAppearanceUpdate()
-        
         reloadData()
         
         var i = 0
@@ -148,12 +145,6 @@ open class SKPhotoBrowser: UIViewController {
             photo.index = i
             i += 1
         }
-    }
-    
-    open override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        setNeedsStatusBarAppearanceUpdate()
     }
     
     override open func viewWillLayoutSubviews() {
@@ -186,7 +177,7 @@ open class SKPhotoBrowser: UIViewController {
     }
     
     override open var prefersStatusBarHidden: Bool {
-        return true //!SKPhotoBrowserOptions.displayStatusbar
+        return !SKPhotoBrowserOptions.displayStatusbar
     }
     
     // MARK: - Notification
